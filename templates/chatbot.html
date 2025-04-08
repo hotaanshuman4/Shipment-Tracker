@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container w-full">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-blue-600 shadow-md p-4 rounded-t-lg">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-shipping-fast text-3xl text-yellow-300 mr-2"></i>
+                <h1 class="text-2xl font-bold text-white">Shipment Tracker</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-yellow-100">Welcome, {{ current_user.username }}</span>
+                <a href="{{ url_for('logout') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-4 py-2 rounded-lg transition duration-300 font-medium">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chat Container -->
+    <div class="bg-white rounded-b-lg shadow-xl flex flex-col border-2 border-blue-200">
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 chat-container bg-gradient-to-b from-blue-50 to-white">
+            <div class="message bot-message">
+                <div class="flex items-start">
+                    <div class="bg-blue-500 text-white rounded-full p-2 mr-2">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-lg shadow-sm">
+                        <p class="font-semibold text-blue-800">Shipping Chatbot</p>
+                        <p class="text-gray-700">👋 Welcome to the Shipment Tracker! I can help you with:</p>
+                        <ul class="list-disc list-inside mt-2 text-gray-700">
+                            <li>Finding your package location</li>
+                            <li>Checking delivery estimates</li>
+                            <li>Investigating delays</li>
+                            <li>Address change requests</li>
+                            <li>Tracking number issues</li>
+                        </ul>
+                        <p class="mt-2 text-gray-700">Just ask me anything about your shipment, and I'll help you out!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="border-t border-blue-200 p-4 bg-gradient-to-r from-blue-50 to-yellow-50">
+            <form id="tracking-form" class="flex space-x-4">
+                <input type="text" 
+                       id="tracking-input" 
+                       class="flex-1 border-2 border-blue-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       placeholder="Ask about your shipment or enter tracking number..."
+                       autocomplete="off"
+                       required>
+                <button type="submit" 
+                        class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg transition duration-300 shadow-md">
+                    <i class="fas fa-paper-plane mr-2"></i>Send
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+const commonQuestions = {
+    'where is my package': 'Could you please share your tracking number? I\'ll find the latest update for you.',
+    'when will my order arrive': 'Let me check that for you! Please provide your tracking number.',
+    'my package is delayed': 'I\'m sorry to hear that. Let me check the tracking status and see what caused the delay. Could you share your tracking number?',
+    'tracking number isn\'t working': 'Hmm, that\'s odd. Can you double-check the number and send it again? Make sure there are no spaces or special characters.',
+    'change the delivery address': 'That depends on the carrier and shipment status. I\'ll need your tracking number to check if an address change is possible.',
+    'what can you do': 'I can help you track shipments, answer delivery-related questions, and keep you updated. Just ask away!',
+    'who made you': 'I was created to make your shipment tracking easier—built by a smart developer (that\'s probably you 😉).',
+    'are you a real person': 'I\'m not human, but I\'m here to help like one! Think of me as your friendly virtual assistant.',
+    'tell me a joke': 'Sure! Why did the package go to therapy? Because it had too much baggage! 😄',
+    'how are you': 'I\'m always good, especially when I get to help you!',
+    'what\'s your name': 'I am the Shipping Chatbot, here to assist you with all your shipping needs! 😊',
+    'do you speak other languages': 'I\'m learning more every day! Right now, I\'m best in English, but multi-language support is coming soon.',
+    'how do i contact customer support': 'You can reach out to our support team at hotaanshuman4@gmail.com.',
+    'can i cancel my order': 'I can check the order status for you. Please provide your tracking number.',
+    'what shipping carriers do you use': 'We use several carriers including FedEx, UPS, DHL, USPS, Royal Mail, Canada Post, and more depending on the shipment destination and requirements.',
+    'who are you': 'I am a Shipping Chatbot in your service!',
+    'help': 'I can help you track packages, check delivery estimates, investigate delays, and handle address changes. Just ask me anything about your shipment!',
+    'hello': 'Hi there! How can I help you with your shipment today?',
+    'hi': 'Hello! What can I do for you regarding your shipment?'
+};
+
+document.getElementById('tracking-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const input = document.getElementById('tracking-input');
+    const message = input.value.trim().toLowerCase();
+    
+    if (!message) return;
+    
+    // Add user message
+    addMessage(input.value, 'user');
+    input.value = '';
+    
+    // Check for common questions first
+    let response = null;
+    for (const [question, answer] of Object.entries(commonQuestions)) {
+        if (message.includes(question)) {
+            response = answer;
+            break;
+        }
+    }
+    
+    // If no common question matched, treat as tracking number
+    if (!response) {
+        try {
+            const apiResponse = await fetch('/track', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ tracking_number: message })
+            });
+            
+            const data = await apiResponse.json();
+            response = data.message;
+        } catch (error) {
+            response = 'Sorry, there was an error processing your request. Please try again.';
+        }
+    }
+    
+    addMessage(response, 'bot');
+});
+
+function addMessage(text, sender) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message mb-4`;
+    
+    if (sender === 'user') {
+        messageDiv.innerHTML = `
+            <div class="flex items-start justify-end">
+                <div class="bg-yellow-100 p-3 rounded-lg shadow-sm max-w-[80%]">
+                    <p class="font-semibold text-yellow-800">You</p>
+                    <p class="text-gray-700 whitespace-pre-line">${text}</p>
+                </div>
+                <div class="bg-yellow-400 text-gray-800 rounded-full p-2 ml-2">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        `;
+    } else {
+        messageDiv.innerHTML = `
+            <div class="flex items-start">
+                <div class="bg-blue-500 text-white rounded-full p-2 mr-2">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="bg-blue-100 p-3 rounded-lg shadow-sm max-w-[80%]">
+                    <p class="font-semibold text-blue-800">Shipping Chatbot</p>
+                    <p class="text-gray-700 whitespace-pre-line">${text}</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+{% endblock %} 

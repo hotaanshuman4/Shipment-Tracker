@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4 pl-4">Track Your Shipments with Ease</h1>
+                <p class="text-lg text-gray-700 mb-6 pl-4">Our intelligent shipping chatbot helps you track packages, check delivery estimates, and manage your shipments effortlessly.</p>
+                <div class="flex space-x-4 pl-4">
+                    <a href="{{ url_for('login') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition duration-300 shadow-md font-medium">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
+                    <a href="{{ url_for('register') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg transition duration-300 shadow-md font-medium">
+                        <i class="fas fa-user-plus mr-2"></i>Register
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="bg-transparent p-4 flex items-center justify-center">
+                    <img src="https://img.freepik.com/premium-vector/delivery-service-concept-delivery-van-city-background-fast-delivery-city-vector-illustration-yellow-truck-delivery-cargo-auto-fast-service-truck_735449-203.jpg" alt="Delivery Truck" class="w-full max-w-md mx-auto rounded-lg opacity-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">Why Choose Our Shipment Tracker?</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-200 hover:shadow-xl transition duration-300">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+                    <i class="fas fa-robot text-3xl text-yellow-300"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">Intelligent Chatbot</h3>
+                    <p class="text-gray-700">Our friendly AI assistant answers your shipping questions instantly and helps you track packages with natural conversation.</p>
+                </div>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-200 hover:shadow-xl transition duration-300">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+                    <i class="fas fa-globe text-3xl text-yellow-300"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">Multiple Carriers</h3>
+                    <p class="text-gray-700">Track packages from various carriers including FedEx, UPS, DHL, USPS, and more all in one place.</p>
+                </div>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-200 hover:shadow-xl transition duration-300">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+                    <i class="fas fa-clock text-3xl text-yellow-300"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">Real-Time Updates</h3>
+                    <p class="text-gray-700">Get instant updates on your package location, delivery estimates, and any delays in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">How It Works</h2>
+        
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0 md:space-x-8">
+            <!-- Step 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200 w-full md:w-1/3 text-center">
+                <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-3">Register & Login</h3>
+                <p class="text-gray-700">Create an account or login to access our shipment tracking services.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200 w-full md:w-1/3 text-center">
+                <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-3">Ask Your Question</h3>
+                <p class="text-gray-700">Simply ask the chatbot about your shipment or enter a tracking number.</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200 w-full md:w-1/3 text-center">
+                <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-3">Get Instant Results</h3>
+                <p class="text-gray-700">Receive immediate information about your shipment status and location.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">What Our Users Say</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200">
+                <div class="flex items-center mb-4">
+                    <div class="bg-yellow-400 text-gray-800 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-800">Anshuman Hota</h4>
+                        <p class="text-gray-600">E-commerce Store Owner</p>
+                    </div>
+                </div>
+                <p class="text-gray-700">"This shipment tracker has completely transformed how I manage my deliveries. The chatbot is incredibly helpful and saves me so much time!"</p>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200">
+                <div class="flex items-center mb-4">
+                    <div class="bg-yellow-400 text-gray-800 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-800">Harshita Khandelwal</h4>
+                        <p class="text-gray-600">Online Shopper</p>
+                    </div>
+                </div>
+                <p class="text-gray-700">"I love how easy it is to track my packages. The chatbot answers all my questions instantly, and I can check delivery estimates with just a simple question."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-xl p-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Track Your Shipments?</h2>
+            <p class="text-yellow-100 mb-6">Join thousands of satisfied users who trust our shipment tracking service.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="{{ url_for('login') }}" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg transition duration-300 shadow-md font-medium">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login Now
+                </a>
+                <a href="{{ url_for('register') }}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg transition duration-300 shadow-md font-medium">
+                    <i class="fas fa-user-plus mr-2"></i>Create Account
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
