@@ -1,6 +1,10 @@
+![Chatbot Demo](https://github.com/hotaanshuman4/Shipment-Tracker-Chatbot/blob/f9e5e916aa93d7a5ae2e1707baa1d51163df265f/Screenshot%20(67).png)
 # Shipment Tracking Chatbot
 
-A modern, containerized chatbot application for tracking shipments with a beautiful UI.
+Welcome to the Shipment Tracker Chatbot! This project is a conversational AI tool designed to help users track shipments seamlessly through a chatbot interface. Built with modern technologies, it provides real-time updates and an intuitive user experience for managing shipment tracking.
+
+## Overview
+The Shipment Tracker Chatbot allows users to input tracking numbers and receive real-time updates on their shipment status. Whether you're a business owner managing multiple deliveries or an individual waiting for a package, this chatbot simplifies the process with natural language interaction.
 
 ## Features
 
@@ -46,4 +50,14 @@ The chatbot provides realistic tracking information including:
 - Delivery partner (Amazon, DHL, BlueDart, etc.)
 - Current location
 - Last update timestamp
-- Expected delivery date 
+- Expected delivery date
+
+## License
+
+This project is licensed under the MIT License. See the  file for details
+
+## Contact
+
+For questions or suggestions, reach out to the project maintainer:
+GitHub: hotaanshuman4
+Email: your-email@example.com
