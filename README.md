@@ -60,4 +60,4 @@ This project is licensed under the MIT License. See the  file for details
 
 For questions or suggestions, reach out to the project maintainer:
 GitHub: hotaanshuman4
-Email: your-email@example.com
+Email: hotaanshuman4@gmail.com
