@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+        }
+        .chat-container {
+            height: calc(100vh - 180px);
+            max-height: 600px;
+        }
+        .message {
+            max-width: 80%;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: auto;
+        }
+        .bot-message {
+            background-color: #f5f5f5;
+            margin-right: auto;
+        }
+        .message p {
+            margin-bottom: 8px;
+        }
+        .message p:last-child {
+            margin-bottom: 0;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    {% block content %}{% endblock %}
+</body>
+</html> 
