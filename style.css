@@ -1,0 +1,103 @@
+/* Common styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Login Page */
+  .login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-container button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+  }
+  
+  /* Chatbot Page */
+  .chat-container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+  }
+  
+  .chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+  
+  .input-area input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+  }
+  
+  .input-area button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+  
+  .message {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+  }
+  
+  .user {
+    background: #d1ecf1;
+    align-self: flex-end;
+  }
+  
+  .bot {
+    background: #f8d7da;
+    align-self: flex-start;
+  }
+  
